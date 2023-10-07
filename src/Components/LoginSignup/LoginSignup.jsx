@@ -1,16 +1,34 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
-
-import facebook_icon from '../Assets/icons8-facebook-144.png';
 import google_icon from '../Assets/icons8-google-144.png';
+import facebook_icon from '../Assets/icons8-facebook-144.png';
 import logo from '../Assets/withoutbg.png';
+import { auth, googleProvider, signInWithPopup } from './firebase';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 function LoginSignup(props) {
     const [showLoginForm, setShowLoginForm] = useState(false);
+    const navigate = useNavigate(); // Użyj hooka useNavigate do nawigacji
 
     const toggleLoginForm = () => {
         setShowLoginForm(!showLoginForm);
     };
+
+    const handleGoogleRegister = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            if (result.user) {
+                // Przekieruj na stronę "/home" po zalogowaniu
+                navigate('/home'); // Upewnij się, że ścieżka jest zgodna z trasą w App.js
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     return (
         <div className="container">
@@ -58,7 +76,7 @@ function LoginSignup(props) {
                     ) : (
                         <>
                             <div className="submit">
-                                <button id="google-login-button">
+                                <button id="google-login-button" onClick={handleGoogleRegister}>
                                     <div className="button-content">
                                         <img src={google_icon} alt="" className="icon" />
                                         Register with Google
@@ -90,5 +108,9 @@ function LoginSignup(props) {
 }
 
 export default LoginSignup;
+
+
+
+
 
 //pod przycisk z ikonka googla podlacz api googla do logowania

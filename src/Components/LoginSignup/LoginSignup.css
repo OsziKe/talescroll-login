@@ -1,17 +1,27 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f0f0f0; /* Domyślny kolor tła, na wypadek gdyby obraz nie załadował się prawidłowo */
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-    max-width: 50%; /* Maksymalna szerokość kontenera */
+    max-width: 50%;
     float: right;
     width: 50%;
-    height: 100%;
-    background-image: url('../Assets/bg.png');
-    background-size: 100% auto; /* Dopasuj tło do rozmiaru kontenera */
-    background-repeat: no-repeat; /* Nie powtarzaj tła */
-    background-position: 100% 50%; /* Przesuń tło w poziomie i pionie na 50% */
+    height: 100vh; /* Zmieniamy na 100vh */
     z-index: 2;
+    background-image: url('../Assets/bg.png');
+    background-size: 100% auto; /* 50% szerokości monitora, zachowaj proporcje */
+    background-repeat: no-repeat;
+    background-position: right bottom; /* Przesunięcie na prawy dolny róg */
 }
 
 
@@ -54,12 +64,12 @@ img {
     flex-direction: column;
     align-items: center;
     z-index: 2;
+    margin-top: -85px;
 }
 
 .input {
     display: flex;
     align-items: center;
-    margin: 10px 0;
     width: 100%;
     max-width: 400px;
     height: 50px;
@@ -67,6 +77,19 @@ img {
     border-radius: 15px;
     z-index: 2;
 }
+
+p {
+    display: flex;
+    flex-direction: column; /* Dodajemy to, aby zawartość (input) była pod paragrafem */
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px;
+    z-index: 2;
+    font-family: Wonderworld PERSONAL USE;
+    font-size: 20px;
+    font-style: normal;
+}
+
 
 .input input {
     height: 100%;
@@ -85,8 +108,10 @@ img {
 p {
     /* Dodaj stylizację dla paragrafów nad inputami */
     font-weight: bold; /* Przykładowy styl dla paragrafów */
-    padding-left: 42px;
-    margin-top: 10px;
+    float: left;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: inherit;
 }
 
 
@@ -148,7 +173,7 @@ button:hover {
     color: #fff6f6;
     border: none;
     border: solid 2px;
-    border-radius: 30px;
+    border-radius: 50px;
     padding: 10px 20px;
     font-weight: bold;
     cursor: pointer;
@@ -156,12 +181,12 @@ button:hover {
     gap: 5px;
     flex-direction: column;
     height: 2em;
-    width: 350px;
+    width: 10%;
+    max-width: 400px;
     display: flex;
     align-items: center;
     margin: auto;
     margin-top: 30px;
-    align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 2;
@@ -208,6 +233,36 @@ button:hover {
     color: #1a1a1a;
 }
 
+#login-button
+{
+    background-color: #1a1a1a;
+    color: #fff6f6;
+    border: none;
+    border: solid 2px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    gap: 5px;
+    flex-direction: column;
+    height: 2em;
+    width: 10%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-top: 30px;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#login-button:hover
+{
+    background: #eeeeee;
+    color: #1a1a1a;
+}
 
 
 
