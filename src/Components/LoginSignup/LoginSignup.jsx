@@ -70,13 +70,13 @@ function LoginSignup(props) {
                 )}
                 <div className="submit-container">
                     {showLoginForm ? (
-                        <div className="submit2" onClick={toggleLoginForm}>
+                        <div className="submit2" onClick={toggleLoginForm} id="login-in-button">
                             Login
                         </div>
                     ) : (
                         <>
-                            <div className="submit">
-                                <button id="google-login-button" onClick={handleGoogleRegister}>
+                            <div className="submit" >
+                                <button id="google-login-button" onClick={handleGoogleRegister} id="iconbutton">
                                     <div className="button-content">
                                         <img src={google_icon} alt="" className="icon" />
                                         Register with Google
@@ -84,7 +84,7 @@ function LoginSignup(props) {
                                 </button>
                             </div>
                             <div className="submit">
-                                <button id="facebook-login-button">
+                                <button id="facebook-login-button" id="iconbutton">
                                     <div className="button-content">
                                         <img src={facebook_icon} alt="" className="icon" />
                                         Register with Facebook
@@ -97,7 +97,7 @@ function LoginSignup(props) {
                         {showLoginForm
                             ? "Don't have an account? "
                             : "Already have an account? "}
-                        <span onClick={toggleLoginForm}>
+                        <span onClick={toggleLoginForm} id="ihave">
                             {showLoginForm ? 'Register' : 'Login'}
                         </span>
                     </div>
