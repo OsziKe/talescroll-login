@@ -3,32 +3,63 @@ import './LoginSignup.css';
 import google_icon from '../Assets/icons8-google-144.png';
 import facebook_icon from '../Assets/icons8-facebook-144.png';
 import logo from '../Assets/withoutbg.png';
-import { auth, googleProvider, signInWithPopup } from './firebase';
 import { useNavigate } from 'react-router-dom';
-
-
-
+import { auth, googleProvider, facebookProvider, signInWithPopup, createUser, signIn } from './firebase';
 
 function LoginSignup(props) {
     const [showLoginForm, setShowLoginForm] = useState(false);
-    const navigate = useNavigate(); // Użyj hooka useNavigate do nawigacji
+    const [isRegister, setIsRegister] = useState(true);
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
     const toggleLoginForm = () => {
         setShowLoginForm(!showLoginForm);
+        setIsRegister(!isRegister);
+        // Zresetuj komunikaty o błędach
+        setEmailError('');
+        setPasswordError('');
     };
 
-    const handleGoogleRegister = async () => {
+    const handleGoogleAction = async () => {
         try {
             const result = await signInWithPopup(auth, googleProvider);
             if (result.user) {
-                // Przekieruj na stronę "/home" po zalogowaniu
-                navigate('/home'); // Upewnij się, że ścieżka jest zgodna z trasą w App.js
+                navigate('/home');
             }
         } catch (error) {
             console.error(error);
         }
     };
 
+    const handleFacebookAction = async () => {
+        try {
+            const result = await signInWithPopup(auth, facebookProvider);
+            if (result.user) {
+                navigate('/home');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleEmailAction = async () => {
+        try {
+            const result = isRegister
+                ? await createUser(auth, email, password)
+                : await signIn(auth, email, password);
+
+            if (result.user) {
+                navigate('/home');
+            }
+        } catch (error) {
+            console.error(error);
+            setEmailError(error.message);
+            setPasswordError('');
+        }
+    };
 
     return (
         <div className="container">
@@ -36,63 +67,83 @@ function LoginSignup(props) {
                 <div className="header">
                     <img src={logo} alt="" className="logo" />
                 </div>
-                {showLoginForm ? (
-                    <div className="inputs">
-                        <p>E-mail</p>
-                        <div className="input" placeholder="Enter your email here">
-                            <input type="email" placeholder="Enter your email here" />
-                        </div>
-                        <p>Password</p>
-                        <div className="input" placeholder="Enter your password here">
-                            <input type="password" placeholder="Enter your password here" />
-                        </div>
-                    </div>
-                ) : (
-                    <div className="inputs">
-                        <p>Name</p>
-                        <div className="input" placeholder="Enter your name here">
-                            <input type="text" placeholder="Enter your name here" />
-                        </div>
-                        <p>E-mail</p>
-                        <div className="input" placeholder="Enter your email here">
-                            <input type="email" placeholder="Enter your email here" />
-                        </div>
-                        <p>Password</p>
-                        <div className="input" placeholder="Enter your password here">
-                            <input type="password" placeholder="Enter your password here" />
-                        </div>
-                        <div className="submit">
-                            <button id="sign-in-button">
-                                Sign In
-                            </button>
-                        </div>
-                    </div>
-                )}
-                <div className="submit-container">
+                <div className="inputs">
                     {showLoginForm ? (
-                        <div className="submit2" onClick={toggleLoginForm} id="login-in-button">
-                            Login
-                        </div>
+                        <>
+                            <p>E-mail</p>
+                            <div className="input" placeholder="Enter your email here">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter your email here"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                            <p className="error-message">{emailError}</p>
+                            <p>Password</p>
+                            <div className="input" placeholder="Enter your password here">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="Enter your password here"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    minLength="6"
+                                    maxLength="20"
+                                />
+                            </div>
+                            <p className="error-message">{passwordError}</p>
+                        </>
                     ) : (
                         <>
-                            <div className="submit" >
-                                <button id="google-login-button" onClick={handleGoogleRegister} id="iconbutton">
-                                    <div className="button-content">
-                                        <img src={google_icon} alt="" className="icon" />
-                                        Register with Google
-                                    </div>
-                                </button>
+                            <p>Name</p>
+                            <div className="input" placeholder="Enter your name here">
+                                <input type="text" placeholder="Enter your name here" />
                             </div>
-                            <div className="submit">
-                                <button id="facebook-login-button" id="iconbutton">
-                                    <div className="button-content">
-                                        <img src={facebook_icon} alt="" className="icon" />
-                                        Register with Facebook
-                                    </div>
-                                </button>
+                            <p>E-mail</p>
+                            <div className="input" placeholder="Enter your email here">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter your email here"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
                             </div>
+                            <p className="error-message">{emailError}</p>
+                            <p>Password</p>
+                            <div className="input" placeholder="Enter your password here">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="Enter your password here"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div>
+                            <p className="error-message">{passwordError}</p>
                         </>
                     )}
+                </div>
+                <div className="submit-container">
+                    <div className="submit">
+                        <button id="google-login-button" onClick={handleGoogleAction} id="iconbutton">
+                            <div className="button-content">
+                                <img src={google_icon} alt="" className="icon" />
+                                {isRegister ? 'Register with Google' : 'Login with Google'}
+                            </div>
+                        </button>
+                    </div>
+                    <div className="submit">
+                        <button id="facebook-login-button" onClick={handleFacebookAction} id="iconbutton">
+                            <div className="button-content">
+                                <img src={facebook_icon} alt="" className="icon" />
+                                {isRegister ? 'Register with Facebook' : 'Login with Facebook'}
+                            </div>
+                        </button>
+                    </div>
+                    <div className="submit">
+                        <button id="sign-up-button" onClick={handleEmailAction}>
+                            {isRegister ? 'Sign Up' : 'Sign In'}
+                        </button>
+                    </div>
                     <div className="forgot-password">
                         {showLoginForm
                             ? "Don't have an account? "
@@ -108,6 +159,13 @@ function LoginSignup(props) {
 }
 
 export default LoginSignup;
+
+
+
+
+
+
+
 
 
 

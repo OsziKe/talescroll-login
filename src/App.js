@@ -1,17 +1,19 @@
 import React from 'react';
 import './App.css';
-import LoginSignup from "./Components/LoginSignup/LoginSignup";
-import SlideShow from "./Components/LoginSignup/SlideShow";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./Components/HomePage/Home";
+import LoginSignup from "./Components/LoginSignup/LoginSignup";
+import SlideShow from "./Components/LoginSignup/SlideShow";
 
 function App() {
     return (
         <Router>
             <div>
-                <SlideShow />
                 <Routes>
-                    <Route path="/" element={<LoginSignup />} />
+                    <Route path="/" element={<>
+                        <SlideShow />
+                        <LoginSignup />
+                    </>} />
                     <Route path="/home" element={<Home />} />
                 </Routes>
             </div>
@@ -20,3 +22,4 @@ function App() {
 }
 
 export default App;
+

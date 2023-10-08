@@ -10,16 +10,10 @@ const images = [pic1, pic2, pic3, pic4];
 
 const textData = [
     [
-        "Zarejestruj się,",
-        "aby Nie",
-        "Przegapić",
-        "Okazji!",
+        "Zarejestruj się \n aby Nie \n Przegapić \n Okazji!"
     ],
     [
-        "Znajdź swój",
-        "ulubiony",
-        "świat",
-        "w książkach!",
+        "Znajdź swój \n ulubiony \n świat \n w książkach!",
     ],
     [
         "Rozpocznij swoją",
@@ -63,7 +57,11 @@ const SlideShow = () => {
             <img src={images[currentSlide]} alt={`Slide ${currentSlide + 1}`} />
             <div className="text-overlay">
                 <div className="text-center">
-                    <h2>{currentText}</h2>
+                    <h2>{currentText.split('\n').map((line, index) => (
+                        <div className="line-background" key={index}>
+                            {line}
+                        </div>
+                    ))}</h2>
                 </div>
             </div>
         </div>
