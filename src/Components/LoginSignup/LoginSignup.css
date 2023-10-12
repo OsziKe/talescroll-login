@@ -44,38 +44,57 @@ img {
     height: auto; /* Automatyczna wysokość dla zachowania proporcji */
 }
 
-.inputs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2;
-    margin-top: -5%;
-}
 
-.input {
+.inputs .input {
     display: flex;
     align-items: center;
-    width: 50vh;
-    max-width: 100%;
+    width: 100%;
+    max-width: 50%;
     height: 5vh;
     border-radius: 5px;
     z-index: 2;
 }
 
-p {
+
+.inputs p {
     display: flex;
-    flex-direction: column;
+    align-items: flex-start; /* Wyjustuj paragrafy do lewej krawędzi inputów */
+    justify-content: flex-start; /* Wyjustuj paragrafy do lewej krawędzi inputów */
+    float: left;
+    text-align: left; /* Wyjustuj tekst do lewej krawędzi inputów */
+    margin: 0;
     font-family: Wonderworld PERSONAL USE;
     font-size: 1.2vw;
     font-style: normal;
-    text-align: left; /* You can remove this line for the paragraphs */
-    align-items: flex-start;
-    justify-content: left;
-    padding: 0; /* Remove padding to start from the left edge */
+    padding: 10px;
 }
 
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Wyśrodkuj inputy poziomo */
+    text-align: center; /* Wyśrodkuj tekst wewnątrz inputów */
+    z-index: 2;
+    margin-top: -5%;
+}
 
-.input input {
+.inputs .input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 50%;
+    height: 5vh;
+    border-radius: 5px;
+    z-index: 2;
+    text-align: left; /* Ustal lewe wyjustowanie tekstu w inputach */
+}
+
+.inputs .error-message{
+    color: red;
+    font-size: 1.6vh;
+}
+
+.inputs input {
     height: 100%;
     width: 100%;
     max-width: 100%;
@@ -84,14 +103,13 @@ p {
     border: 2px solid #282c34;
     outline: none;
     color: #282c34;
-    font-size: 14px;
+    font-size: 1.6vh;
     font-family: sen;
     padding-left: 20px;
     z-index: 2;
     align-items: center;
     justify-content: center;
 }
-
 
 span {
     color: #4fb0f2;
@@ -103,14 +121,14 @@ span {
     align-items: center; /* Wyśrodkuj przyciski poziomo */
     gap: 20px;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .button-content {
     display: flex;
     align-items: center;
     justify-content: flex-end; /* Align content to the right */
-    gap: 5px;
+    gap: 10px;
     justify-content: center;
 }
 
@@ -125,23 +143,24 @@ span {
     border: none;
     border: solid 2px;
     border-radius: 20px;
-    padding: 10px 20px;
+    padding: 20px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
     gap: 5px;
     flex-direction: column;
-    height: 100%;
-    max-height: 40px;
-    width: 100%; /* Zmieniamy szerokość na 100% */
+    height: 5vh;
+    max-height: 100%;
+    width: 20vw; /* Zmieniamy szerokość na 100% */
     max-width: 100%; /* Zmieniamy maksymalną szerokość na 100% */
     display: flex;
     align-items: center;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 5px;
     justify-content: center;
     cursor: pointer;
     z-index: 2;
+    font-size: 1.5vh;
 }
 
 
@@ -155,6 +174,7 @@ span {
     padding-left: 52px;
     margin-bottom: 20px;
     z-index: 2;
+    font-size: 1.6vh;
 }
 
 #sign-in-button
@@ -171,13 +191,14 @@ span {
     gap: 5px;
     flex-direction: column;
     height: 4em;
-    width: 100%; /* Zmieniamy szerokość na 100% */
+    width: 15vw; /* Zmieniamy szerokość na 100% */
     max-width: 100%; /* Zmieniamy maksymalną szerokość na 100% */
     display: flex;
     align-items: center;
     margin: auto;
     justify-content: center;
     z-index: 2;
+    font-size: 1.5vh;
 }
 
 #sign-in-button:hover
@@ -200,7 +221,7 @@ span {
     gap: 5px;
     flex-direction: column;
     height: 2em;
-    width: 10%;
+    width: 15vw;
     max-width: 400px;
     display: flex;
     align-items: center;
@@ -208,6 +229,7 @@ span {
     justify-content: center;
     cursor: pointer;
     z-index: 2;
+    font-size: 1.5vh;
 }
 
 #login-in-button:hover
@@ -230,7 +252,7 @@ span {
 
 .error-message {
     color: red;
-    font-size: 14px;
+    font-size: 1.5vh;
     margin-top: 4px; /* Dodatkowy odstęp nad komunikatem */
 }
 
@@ -248,13 +270,14 @@ span {
     gap: 5px;
     flex-direction: column;
     height: 4em;
-    width: 100%; /* Zmieniamy szerokość na 100% */
+    width: 20vw; /* Zmieniamy szerokość na 100% */
     max-width: 100%; /* Zmieniamy maksymalną szerokość na 100% */
     display: flex;
     align-items: center;
     margin: auto;
     justify-content: center;
     z-index: 2;
+    font-size: 1.5vh;
 }
 
 #sign-up-button:hover {
