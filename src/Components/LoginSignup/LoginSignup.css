@@ -39,7 +39,6 @@ img {
 
 .logo {
     width: 300vh;
-    margin-top: 2%;
     max-width: 35%; /* Maksymalna szerokość logo */
     height: auto; /* Automatyczna wysokość dla zachowania proporcji */
 }
