@@ -56,25 +56,22 @@ img {
 
 
 .inputs p {
-    display: flex;
-    align-items: flex-start; /* Wyjustuj paragrafy do lewej krawędzi inputów */
-    justify-content: flex-start; /* Wyjustuj paragrafy do lewej krawędzi inputów */
-    float: left;
-    text-align: left; /* Wyjustuj tekst do lewej krawędzi inputów */
+    text-align: left; /* Align the text to the left */
+    width: 50%; /* Make the text span the full width of the input container */
     margin: 0;
-    font-family: Wonderworld PERSONAL USE;
+    font-family: 'Wonderworld PERSONAL USE';
     font-size: 1.2vw;
     font-style: normal;
     padding: 10px;
+    margin-top: 5px;
 }
 
 .inputs {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Wyśrodkuj inputy poziomo */
-    text-align: center; /* Wyśrodkuj tekst wewnątrz inputów */
+    flex-direction: column; /* Keep this to stack elements vertically */
     z-index: 2;
     margin-top: -5%;
+    align-items: center;
 }
 
 .inputs .input {
@@ -139,8 +136,6 @@ span {
 {
     background-color: #f0f0f0;
     color: #1a1a1a;
-    border: none;
-    border: solid 2px;
     border-radius: 20px;
     padding: 20px;
     font-weight: bold;
@@ -240,6 +235,7 @@ span {
 #ihave
 {
     color: #4fb0f2;
+    cursor: pointer;
 }
 
 .forgot-password

@@ -162,13 +162,12 @@ export default LoginSignup;
 
 
 
+//dodaj do kazdego inputa pod nim error masage w zaleznosci od bledu, uzglednij za malu za duza liczbe znakow, znaki niedozwolone
+
+
+//popraw aplikacje fb i google
+
+//paragrafy niech beda nad inputami od lewej krawedzi a nie na srodku srodka
 
 
 
-
-
-
-
-
-
-//pod przycisk z ikonka googla podlacz api googla do logowania
