@@ -45,9 +45,16 @@ img {
 }
 
 .logo {
-    width: 300vh;
+    width: 400vh;
     max-width: 35%; /* Maksymalna szerokość logo */
     height: auto; /* Automatyczna wysokość dla zachowania proporcji */
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 40%; /* Dostosuj szerokość logo do preferencji na telefonach */
+        max-width: none; /* Usuń maksymalną szerokość na telefonie */
+    }
 }
 
 
@@ -69,8 +76,21 @@ img {
     font-family: 'Wonderworld PERSONAL USE';
     font-size: 1.2vw;
     font-style: normal;
-    padding: 10px;
+    padding: 7px;
     margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .inputs p {
+        text-align: left; /* Align the text to the left */
+        width: 50%; /* Make the text span the full width of the input container */
+        margin: 0;
+        font-family: 'Wonderworld PERSONAL USE';
+        font-size: 4.5vw;
+        font-style: normal;
+        padding: 7px;
+        margin-top: 5px;
+    }
 }
 
 .inputs {
@@ -122,9 +142,9 @@ span {
     display: flex;
     flex-direction: column;
     align-items: center; /* Wyśrodkuj przyciski poziomo */
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .button-content {
@@ -170,9 +190,17 @@ span {
     color: white;
 }
 
+@media (max-width: 768px) {
+    #iconbutton {
+        width: 100%;
+        height: 1vh;
+        max-height: none;
+        max-width: none;
+    }
+}
+
 .forgot-password
 {
-    padding-left: 52px;
     margin-bottom: 20px;
     z-index: 2;
     font-size: 1.6vh;
@@ -255,7 +283,7 @@ span {
 .error-message {
     color: red;
     font-size: 1.5vh;
-    margin-top: 4px; /* Dodatkowy odstęp nad komunikatem */
+    margin: 0; /* Dodatkowy odstęp nad komunikatem */
 }
 
 
@@ -288,3 +316,20 @@ span {
     color: #1a1a1a;
 }
 
+@media (max-width: 768px) {
+    #sign-in-button {
+        width: 50vw;
+        height: 7vh;
+        max-height: none;
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #sign-up-button {
+        width: 50vw;
+        height: 7vh;
+        max-height: none;
+        max-width: none;
+    }
+}
