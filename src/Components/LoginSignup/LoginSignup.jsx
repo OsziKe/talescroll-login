@@ -10,8 +10,10 @@ function LoginSignup(props) {
     const [showLoginForm, setShowLoginForm] = useState(false);
     const [isRegister, setIsRegister] = useState(true);
     const navigate = useNavigate();
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
@@ -19,8 +21,37 @@ function LoginSignup(props) {
         setShowLoginForm(!showLoginForm);
         setIsRegister(!isRegister);
         // Zresetuj komunikaty o błędach
+        setNameError('');
         setEmailError('');
         setPasswordError('');
+    };
+
+    const validateEmail = (email) => {
+        if (!email) {
+            setEmailError('Email is required');
+        } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+            setEmailError('Invalid email address');
+        } else {
+            setEmailError('');
+        }
+    };
+
+    const validatePassword = (password) => {
+        if (!password) {
+            setPasswordError('Password is required');
+        } else if (password.length < 6) {
+            setPasswordError('Password is too short');
+        } else {
+            setPasswordError('');
+        }
+    };
+
+    const validateName = (name) => {
+        if (!name && !showLoginForm) { // Sprawdź tylko, jeśli jesteś w trybie rejestracji (name jest wymagane)
+            setNameError('Name is required');
+        } else {
+            setNameError('');
+        }
     };
 
     const handleGoogleAction = async () => {
@@ -46,6 +77,14 @@ function LoginSignup(props) {
     };
 
     const handleEmailAction = async () => {
+        validateName(name); // Walidacja pola "Name" przy próbie rejestracji
+        validateEmail(email);
+        validatePassword(password);
+
+        if (nameError || emailError || passwordError) {
+            return;
+        }
+
         try {
             const result = isRegister
                 ? await createUser(auth, email, password)
@@ -76,7 +115,10 @@ function LoginSignup(props) {
                                     type="email"
                                     id="email"
                                     placeholder="Enter your email here"
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                        validateEmail(e.target.value);
+                                    }}
                                 />
                             </div>
                             <p className="error-message">{emailError}</p>
@@ -86,7 +128,10 @@ function LoginSignup(props) {
                                     type="password"
                                     id="password"
                                     placeholder="Enter your password here"
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                        validatePassword(e.target.value);
+                                    }}
                                     minLength="6"
                                     maxLength="20"
                                 />
@@ -97,15 +142,27 @@ function LoginSignup(props) {
                         <>
                             <p>Name</p>
                             <div className="input" placeholder="Enter your name here">
-                                <input type="text" placeholder="Enter your name here" />
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="Enter your name here"
+                                    onChange={(e) => {
+                                        setName(e.target.value);
+                                        validateName(e.target.value);
+                                    }}
+                                />
                             </div>
+                            <p className="error-message">{nameError}</p>
                             <p>E-mail</p>
                             <div className="input" placeholder="Enter your email here">
                                 <input
                                     type="email"
                                     id="email"
                                     placeholder="Enter your email here"
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                        validateEmail(e.target.value);
+                                    }}
                                 />
                             </div>
                             <p className="error-message">{emailError}</p>
@@ -115,7 +172,10 @@ function LoginSignup(props) {
                                     type="password"
                                     id="password"
                                     placeholder="Enter your password here"
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                        validatePassword(e.target.value);
+                                    }}
                                 />
                             </div>
                             <p className="error-message">{passwordError}</p>
@@ -159,6 +219,8 @@ function LoginSignup(props) {
 }
 
 export default LoginSignup;
+
+
 
 
 

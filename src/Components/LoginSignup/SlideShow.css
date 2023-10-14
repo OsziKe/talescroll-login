@@ -80,3 +80,12 @@ span {
 }
 
 
+/*wylacz hovera na telefonie*/
+
+/* Styl dla Slideshow na telefonach i mniejszych urządzeniach */
+@media (max-width: 768px) {
+    .slide-show {
+        display: none; /* Ukryj Slideshow na małych ekranach */
+    }
+}
+

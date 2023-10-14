@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: auto;
-    max-width: 50%;
+    max-width: 100%;
     float: right;
     width: 50%;
     height: 100vh; /* Zmieniamy na 100vh */
@@ -23,6 +23,13 @@ body {
     background-repeat: no-repeat;
     background-color: rgba(255, 255, 255, 0.8); /* Przykład: tło o 80% przezroczystości */
     background-blend-mode: lighten; /* Przykład: tryb mieszania kolorów */
+}
+
+/* Styl dla Slideshow na telefonach i mniejszych urządzeniach */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
 }
 
 
