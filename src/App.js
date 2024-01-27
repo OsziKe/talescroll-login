@@ -1,3 +1,4 @@
+// App.js
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -10,11 +11,11 @@ function App() {
         <Router>
             <div>
                 <Routes>
-                    <Route path="/" element={<>
+                    <Route path="/Login" element={<>
                         <SlideShow />
                         <LoginSignup />
                     </>} />
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/home" element={<Home />} /> {/* Nowa trasa dla strony głównej */}
                 </Routes>
             </div>
         </Router>
@@ -22,4 +23,3 @@ function App() {
 }
 
 export default App;
-

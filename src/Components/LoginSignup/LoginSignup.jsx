@@ -4,11 +4,12 @@ import google_icon from '../Assets/icons8-google-144.png';
 import facebook_icon from '../Assets/icons8-facebook-144.png';
 import logo from '../Assets/withoutbg.png';
 import { useNavigate } from 'react-router-dom';
-import { auth, googleProvider, facebookProvider, signInWithPopup, createUser, signIn } from './firebase';
+import { auth, googleProvider, facebookProvider, signInWithPopup, createUser, signIn, sendPasswordResetEmail } from './firebase';
 
 function LoginSignup(props) {
     const [showLoginForm, setShowLoginForm] = useState(false);
     const [isRegister, setIsRegister] = useState(true);
+    const [showResetPassword, setShowResetPassword] = useState(false);
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -16,14 +17,31 @@ function LoginSignup(props) {
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [resetPasswordSuccess, setResetPasswordSuccess] = useState('');
 
     const toggleLoginForm = () => {
         setShowLoginForm(!showLoginForm);
         setIsRegister(!isRegister);
+        setShowResetPassword(false);
         // Zresetuj komunikaty o błędach
         setNameError('');
         setEmailError('');
         setPasswordError('');
+    };
+
+    const handleResetPassword = async () => {
+        validateEmail(email);
+        if (emailError) {
+            return;
+        }
+
+        try {
+            await sendPasswordResetEmail(auth, email);
+            setResetPasswordSuccess('Password reset email sent. Check your inbox.');
+            setShowResetPassword(false);
+        } catch (error) {
+            setEmailError(error.message);
+        }
     };
 
     const validateEmail = (email) => {
@@ -107,7 +125,23 @@ function LoginSignup(props) {
                     <img src={logo} alt="" className="logo" />
                 </div>
                 <div className="inputs">
-                    {showLoginForm ? (
+                    {showResetPassword ? (
+                        <>
+                            <p>Enter your email to reset your password</p>
+                            <div className="input" placeholder="Enter your email here">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter your email here"
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                        validateEmail(e.target.value);
+                                    }}
+                                />
+                            </div>
+                            <p className="error-message">{emailError}</p>
+                        </>
+                    ) : showLoginForm ? (
                         <>
                             <p>E-mail</p>
                             <div className="input" placeholder="Enter your email here">
@@ -184,20 +218,29 @@ function LoginSignup(props) {
                 </div>
                 <div className="submit-container">
                     <div className="submit">
-                        <button id="google-login-button" onClick={handleGoogleAction} id="iconbutton">
+                        <button onClick={handleGoogleAction} id="iconbutton">
                             <div className="button-content">
-                                <img src={google_icon} alt="" className="icon" />
-                                {isRegister ? 'Register with Google' : 'Login with Google'}
+                                <img src={google_icon} alt="" className="icon" /> {isRegister ? 'Register with Google' : 'Login with Google'}
                             </div>
                         </button>
                     </div>
                     <div className="submit">
-                        <button id="facebook-login-button" onClick={handleFacebookAction} id="iconbutton">
+                        <button onClick={handleFacebookAction} id="iconbutton">
                             <div className="button-content">
-                                <img src={facebook_icon} alt="" className="icon" />
-                                {isRegister ? 'Register with Facebook' : 'Login with Facebook'}
+                                <img src={facebook_icon} alt="" className="icon" /> {isRegister ? 'Register with Facebook' : 'Login with Facebook'}
                             </div>
                         </button>
+                    </div>
+                    <div className="submit">
+                        {showResetPassword ? (
+                            <button id="reset-password-button" onClick={handleResetPassword}>
+                                Reset Password
+                            </button>
+                        ) : (
+                            <span onClick={() => setShowResetPassword(true)} id="reset-password">
+                                Reset Password
+                            </span>
+                        )}
                     </div>
                     <div className="submit">
                         <button id="sign-up-button" onClick={handleEmailAction}>
@@ -205,13 +248,14 @@ function LoginSignup(props) {
                         </button>
                     </div>
                     <div className="forgot-password">
-                        {showLoginForm
-                            ? "Don't have an account? "
-                            : "Already have an account? "}
+                        {showLoginForm ? "Don't have an account? " : "Already have an account? "}
                         <span onClick={toggleLoginForm} id="ihave">
                             {showLoginForm ? 'Register' : 'Login'}
                         </span>
                     </div>
+                    {showResetPassword && (
+                        <p className="reset-password-success">{resetPasswordSuccess}</p>
+                    )}
                 </div>
             </div>
         </div>
@@ -219,6 +263,7 @@ function LoginSignup(props) {
 }
 
 export default LoginSignup;
+
 
 
 

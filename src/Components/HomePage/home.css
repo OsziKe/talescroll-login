@@ -1,8 +1,450 @@
-h1{
-    font-family: Wonderworld PERSONAL USE;
+html, body {
+    height: 100%; /* Spróbuj usunąć lub zmienić na auto */
+    overflow: auto; /* Spróbuj usunąć lub zmienić na auto */
+    overflow-x: hidden; /* Wyłącz przewijanie poziome */
+}
+
+.Bg1{
+    background-image: url("C:\Users\oskar\OneDrive\Pulpit\talescroll-login1\talescroll-login\public\paper-texture-transformed.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+
+/* App.css */
+.headerjazda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #eee;
+    background-image: url("C:\Users\oskar\OneDrive\Pulpit\talescroll-login1\talescroll-login\public\paper-texture-transformed.jpeg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center; /* Centrowanie elementów w pionie */
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #1a1a1a;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+    color: #3498db;
+}
+
+.header-logo img {
+    width: 100%;
+    height: 10vh;
+    margin: 0;
+    margin-left: 30px;
+}
+
+
+.header-nav ul {
+    list-style-type: none;
+    display: flex;
+    color: #1a1a1a;
+    margin: 0; /* Usunięcie marginesu, aby uniknąć dodatkowego odstępu */
+}
+
+.header-nav li {
+    font-size: 3vh;
+    margin-right: 60px;
+    font-family: Sen;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center; /* Centrowanie elementów w pionie */
+}
+
+.header-buttons button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header-buttons button {
+    text-decoration: none;
+    color: inherit;
+    margin: 20px;
+}
+
+.header-buttons button:first-child {
+    background-color: #d7d7d7;
+    color: #181818;
+    border: 3.5px solid #000000;
+    border-radius: 100px;
+    width: 7vw;
+    height: 7.5vh;
+    font-family: 'Amiri';
+    font-size: 2.8vh;
+}
+
+.header-buttons button:last-child {
+    background-color: #181818;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    width: 10vw;
+    height: 7.5vh;
+    font-family: 'Amiri';
+    font-size: 2.8vh;
+    white-space: nowrap;
+}
+
+
+/* home.css */
+.gray-bar {
+    background-color: #ccc;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-image: url('C:/Users/oskar/OneDrive/Pulpit/talescroll-login1/talescroll-login/public/bglogin.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1; /* Dodano z-index */
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Zmieniono align-items na flex-end */
+    width: 100%; /* Dodano szerokość 100% dla .box */
+    margin-right: 200px;
+}
+
+
+.taiescroll-banner {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 2;
+
+}
+
+.content1 {
+    padding: 10px;
+    background-color: #000000; /* Kolor szarego paska dla zawartości */
+    color: white;
+    font-size: 2.5vh;
+    font-family: 'Sen', sans-serif;
+    line-height: 1.1;
+    padding: 20px;
+}
+
+.content1 h1 {
+    font-family: 'Amiri Quran', sans-serif;
+    font-size: 10vh;
+    color: #fff6f6;
+    margin: 0;
+    text-align: left;
+}
+
+/* home.css */
+.join-us-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%; /* Wypełnij całą wysokość .content */
+}
+
+.join-us-button button {
+    font-size: 2.3vh;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    border-radius: 100px;
+    border: 2px solid white;
+}
+
+.Emailinput
+{
+    color: #fff6f6;
+    font-family: Sen;
+    padding: 20px;
+    font-size: 2.3vh;
+    margin-left: 20px;
+    border-radius: 20px;
+    background-color: #1a1a1a;
+    border: 2px solid #ffffff;
+}
+
+
+
+
+/* home.css */
+.centered-buttons {
+    text-align: center;
+    margin-top: 7.5vh; /* Dodany odstęp od góry */
+    margin-bottom: 7.5vh;
+
+}
+
+.centered-buttons button {
+    border-radius: 100px;
+    font-size: 3vh;
+    padding: 30px 45px;
+    background-color: #181818;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 50px; /* Dodany odstęp między przyciskami */
+    font-family: 'Amiri', sans-serif;
+    width: 30%;
+}
+
+
+
+
+/* home.css */
+.blog-bar {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ccc;
+    background-image: url("C:\Users\oskar\OneDrive\Pulpit\talescroll-login1\talescroll-login\public\blog.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.Blog {
+    padding: 50px;
+    background-color: #000000; /* Kolor szarego paska dla zawartości */
+    color: white;
+    font-size: 2vh;
+    font-family: 'Amiri Quran', sans-serif;
+    line-height: 1.1;
+    float: left;
+}
+
+.Blog h1 {
+    font-family: 'Amiri Quran', sans-serif;
+    font-size: 9vh;
+    color: #fff6f6;
+    margin: 0;
+    text-align: left;
+}
+
+.box2 {
+    padding: 10px;
+    background-color: transparent; /* Przeźroczyste tło */
+    color: white;
+    font-size: 5vh;
+    font-family: 'Amiri Quran', sans-serif;
+    line-height: 1.1;
+    margin: 0;
+    display: inline-block;
+}
+
+.Blog p {
+    font-family: 'Amiri Quran', sans-serif;
+    font-size: 4vh;
+    color: #fff6f6;
+    margin: 0;
+    text-align: left;
+}
+
+
+
+.blogsite {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-image: url("C:\Users\oskar\OneDrive\Pulpit\talescroll-login1\talescroll-login\public\bg2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rectangle {
+    margin: 70px;
+    width: 15vw;
+    height: 50vh;
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: opacity 0.3s; /* Dodano efekt przejścia dla płynnego zwiększania krycia */
+    background-position: -20px -10px;
+    background-position: center;
+}
+
+.rectangle:hover {
+    opacity: 0.8; /* Zwiększenie krycia po najechaniu myszką */
+}
+
+.rectangle header {
+    background-color: #181818;
+    border-radius: 35px 35px 0 0;
+    padding: 20px;
+    color: white;
+    font-size: 2vh;
+}
+
+.rectangle img {
+    width: 6vw;
+    height: 12vh;
+    margin: 0 auto;
+    filter: invert(1); /* Inwersja kolorów - czarne na białe */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Dodanie cienia */
+}
+
+.rectangle button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 0 0 15px 15px;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 2.3vh;
+    font-family: Sen;
+}
+
+.rectangle a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.shop-bar
+{
+    text-align: center;
+    background-color: #ccc;
+    padding: 10px;
+    background-image: url("C:\Users\oskar\OneDrive\Pulpit\talescroll-login1\talescroll-login\public\shop.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.shop-box {
+    padding: 50px;
+    color: white;
+    font-size: 6vh;
+    font-family: 'Amiri Quran', sans-serif;
+    line-height: 1.1;
+    margin: 0;
+    display: flex;
+}
+
+.shop-box h1 {
+    font-family: 'Amiri Quran', sans-serif;
+    font-size: 9vh;
+    color: #fff6f6;
+    margin: 0;
+    text-align: center;
+    background-color: black;
+    padding:50px 50px; /* Dodano wypełnienie dla napisu */
+    display: inline-block; /* Dodano display inline-block */
+
+}
+
+
+.shop-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-image: url("C:\Users\oskar\OneDrive\Pulpit\talescroll-login1\talescroll-login\public\black-paper.png");
+    color: white;
+    font-family: Sen;
+}
+
+.product-image img {;
+    height: 80vh;
+    width: 80vh;
+    border-radius: 8px;
+}
+
+.product-details {
+    flex: 1;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+.product-details h2 {
+    font-size: 7vh;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.product-details p {
+    font-size: 2.3vh;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.price-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-price {
+    font-size: 3.5vh;
+    margin-bottom: 10px;
+}
+
+.action-buttons button {
+    padding: 10px;
+    margin-right: 40px;
+}
+
+/* home.css */
+.book-ask-bar {
+    text-align: center;
+    background-color: #ccc;
+    padding: 10px;
+    background-image: url("C:\Users\oskar\OneDrive\Pulpit\talescroll-login1\talescroll-login\public\bookask.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.book-ask-box {
+    padding: 10px;
+    background-color: transparent; /* Przeźroczyste tło */
+    color: white;
+    font-size: 20px;
+    font-family: 'Amiri Quran', sans-serif;
+    line-height: 1.1;
+    margin: 0;
+    display: inline-block;
+}
+
+.book-ask-box h1 {
+    font-family: 'Amiri Quran', sans-serif;
     font-size: 90px;
     color: #fff6f6;
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin: 0;
+    text-align: left;
+    background-color: black;
+    padding: 0 10px;
+    display: inline-block;
+}
+
+
+.book-ask-box
+{
+    color: black;
+    font-family: "Amiri Quran", sans-serif;
+    font-size: 4vh;
 }
